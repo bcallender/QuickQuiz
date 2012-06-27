@@ -30,6 +30,7 @@
 }
 - (void)loadPicture
 {
+    //Main Dictionary: this contains the urls for the images and the 'names' of the people
     NSDictionary *mainDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                               @"http://blogs.honeywellsecurity.com/content/uploads/2011/11/John-Smith1.jpg", @"Johnny Appleseed",
                               @"http://cnhsg.net/images659/Meg%20Brown.jpg", @"Meg Brown",
@@ -38,6 +39,7 @@
                               @"http://static.dailystrength.org/groupfiles/1/6/2/1/10001261/g_1944756615.jpg", @"Lily Evans",
                               @"http://ia.media-imdb.com/images/M/MV5BNDg3Nzk5NTQyN15BMl5BanBnXkFtZTcwNTA4ODI2Mw@@._V1._SX640_SY360_.jpg", @"Dora Finkelstein",@"https://pictures.dealer.com/a/airportcdjcllc/1289/0b853c144046387200489c420a31a180.jpg", @"Eric Graves",@"http://taijiacupuncture.com/images/jane-hilton-headshot.jpg", @"Jane Hilton",nil];
     NSLog(@"Test");
+    //generates a random number beween 0 and the max index of the dictionary, and uses that to pick which name/image will be used. Looks up the name and URLizes the current URL
     int r = arc4random() % [mainDict count];
     NSString *currentName = [[NSString alloc] initWithString:[[mainDict allKeys] objectAtIndex:r]];
     NSString *currentURL = [[NSString alloc] initWithString:[mainDict objectForKey:currentName]];
@@ -47,6 +49,7 @@
     self.Name = currentName;
     int ri = arc4random() % [mainDict count];
     int rans = arc4random() % 6;
+    //populates the answer buttons
     if(rans <= 2){ 
     [Left setTitle:currentName forState:UIControlStateNormal];
         if ([[[mainDict allKeys] objectAtIndex:ri] isEqualToString:currentName]) {
